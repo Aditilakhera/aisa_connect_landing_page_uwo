@@ -102,7 +102,7 @@ const ComparisonCard = ({ title, subtitle, icon: Icon, isPro, children, points }
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
-    className={`flex-1 p-6 lg:p-10 rounded-[32px] border transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${
+    className={`w-full p-4 sm:p-6 lg:p-10 rounded-[24px] sm:rounded-[32px] border transition-all duration-500 hover:shadow-xl hover:-translate-y-1 ${
       isPro 
       ? 'bg-white border-primary/20 shadow-primary/5 whatsapp-shadow' 
       : 'bg-red-50/30 border-red-100/50 shadow-sm'
@@ -161,7 +161,7 @@ const ProblemSolution = () => {
         <div className="absolute bottom-[20%] right-0 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10 w-full flex flex-col items-center">
         <div className="text-center mb-12 lg:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -179,7 +179,7 @@ const ProblemSolution = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-stretch relative">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-10 items-stretch justify-center justify-items-center relative w-full max-w-[310px] sm:max-w-md lg:max-w-none mx-auto">
           
           {/* Transformation Bridge (Desktop Only) */}
           <div className="hidden lg:flex absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white shadow-xl border border-gray-100 items-center justify-center">

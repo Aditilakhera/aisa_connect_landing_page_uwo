@@ -187,23 +187,23 @@ const LiveDemo = () => {
           </div>
         </motion.div>
 
-        {/* Bottom CTAs */}
-        <div className="mt-16 flex flex-col sm:flex-row items-center justify-center gap-4">
+        {/* Bottom CTAs side-by-side in a single row on mobile with absolute safety padding */}
+        <div className="mt-8 sm:mt-16 flex flex-row items-center justify-center gap-1.5 w-full max-w-[335px] sm:max-w-none mx-auto px-2">
           <a 
             href="https://connect.aisa24.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary !w-full sm:!w-auto !px-10 !py-4 flex items-center justify-center gap-2 shadow-xl shadow-primary/30"
+            className="btn-primary w-1/2 sm:w-auto px-1.5 py-2 sm:px-10 sm:py-4 !text-[8.5px] sm:!text-base flex items-center justify-center gap-1 shadow-xl shadow-primary/25 whitespace-nowrap min-h-[34px] sm:min-h-[56px]"
           >
-            Explore AISA Connect<sup className="text-[0.6em]">TM</sup> <ArrowRight size={20} />
+            Explore AISA Connect<sup className="text-[0.6em]">TM</sup> <ArrowRight size={10} className="sm:w-5 sm:h-5" />
           </a>
           <a 
             href="https://calendly.com/admin-uwo24/30min"
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-secondary !w-full sm:!w-auto !px-10 !py-4 flex items-center justify-center gap-2"
+            className="btn-secondary w-1/2 sm:w-auto px-1.5 py-2 sm:px-10 sm:py-4 !text-[8.5px] sm:!text-base flex items-center justify-center gap-1 whitespace-nowrap min-h-[34px] sm:min-h-[56px]"
           >
-            Book Live Demo <Play size={18} />
+            Book Live Demo <Play size={9} className="sm:w-[18px] sm:h-[18px]" />
           </a>
         </div>
       </div>

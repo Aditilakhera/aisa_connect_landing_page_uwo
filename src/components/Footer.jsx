@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Mail, Phone, Send, X, Shield, Lock, CheckCircle2, FileText } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaPinterest, FaReddit, FaQuora, FaMedium, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
   const [isPrivacyOpen, setIsPrivacyOpen] = useState(false);
@@ -34,10 +34,26 @@ const Footer = () => {
             <p className="text-sm text-[#334155] font-bold leading-relaxed mb-6">
               AI-powered WhatsApp automation. Official Meta Business Partner.
             </p>
-            <div className="flex items-center gap-3 justify-center">
-              {[FaFacebook, FaTwitter, FaInstagram, FaLinkedin].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 rounded-xl bg-cream flex items-center justify-center text-foreground/30 hover:bg-primary hover:text-white active:scale-95 transition-all">
-                  <Icon size={17} />
+            <div className="flex flex-row flex-nowrap items-center gap-1 sm:gap-2 justify-center w-full mx-auto mt-2 overflow-visible">
+              {[
+                { Icon: FaFacebook, href: 'https://www.facebook.com/', bg: 'bg-[#1877F2]/10 text-[#1877F2] hover:bg-[#1877F2] hover:text-white shadow-[#1877F2]/5 hover:shadow-[#1877F2]/20' },
+                { Icon: FaInstagram, href: 'https://www.instagram.com/uwo_business/', bg: 'bg-[#E1306C]/10 text-[#E1306C] hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:text-white shadow-[#E1306C]/5 hover:shadow-[#dc2743]/20' },
+                { Icon: FaLinkedin, href: 'https://www.linkedin.com/company/uwo-business/', bg: 'bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2] hover:text-white shadow-[#0A66C2]/5 hover:shadow-[#0A66C2]/20' },
+                { Icon: FaTwitter, href: 'https://x.com/uwo_business', bg: 'bg-black/5 text-[#000000] hover:bg-black hover:text-white shadow-black/5 hover:shadow-black/15' },
+                { Icon: FaPinterest, href: 'https://in.pinterest.com/uwo_business/', bg: 'bg-[#BD081C]/10 text-[#BD081C] hover:bg-[#BD081C] hover:text-white shadow-[#BD081C]/5 hover:shadow-[#BD081C]/20' },
+                { Icon: FaReddit, href: 'https://www.reddit.com/user/AcanthisittaFront692/', bg: 'bg-[#FF4500]/10 text-[#FF4500] hover:bg-[#FF4500] hover:text-white shadow-[#FF4500]/5 hover:shadow-[#FF4500]/20' },
+                { Icon: FaQuora, href: 'https://www.quora.com/profile/UWO-Business', bg: 'bg-[#B92B27]/10 text-[#B92B27] hover:bg-[#B92B27] hover:text-white shadow-[#B92B27]/5 hover:shadow-[#B92B27]/20' },
+                { Icon: FaMedium, href: 'https://medium.com/@sreshthi.unifiedweboption', bg: 'bg-[#12100E]/10 text-[#12100E] hover:bg-[#12100E] hover:text-white shadow-[#12100E]/5 hover:shadow-[#12100E]/20' },
+                { Icon: FaYoutube, href: 'https://www.youtube.com/channel/UC_YQo0Y8bX54gsl8k4D9jvA', bg: 'bg-[#FF0000]/10 text-[#FF0000] hover:bg-[#FF0000] hover:text-white shadow-[#FF0000]/5 hover:shadow-[#FF0000]/20' }
+              ].map((item, i) => (
+                <a 
+                  key={i} 
+                  href={item.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className={`w-7 h-7 sm:w-9 sm:h-9 rounded-lg sm:rounded-xl flex items-center justify-center hover:scale-110 hover:-translate-y-0.5 active:scale-95 transition-all shadow-sm ${item.bg}`}
+                >
+                  <item.Icon className="w-3.5 h-3.5 sm:w-4.5 sm:h-4.5 transition-colors duration-200" />
                 </a>
               ))}
             </div>

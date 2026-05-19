@@ -23,25 +23,27 @@ const WhyAisa = () => {
           </p>
         </div>
 
-        <div className="bg-white rounded-[40px] whatsapp-shadow border border-gray-100 overflow-hidden">
-          <table className="w-full">
-            <thead>
-              <tr className="border-b border-gray-50 bg-gray-50/50">
-                <th className="p-8 text-left text-xs font-black uppercase tracking-widest text-black">Features</th>
-                <th className="p-8 text-center text-xs font-black uppercase tracking-widest text-black">AISA Connect<sup className="text-[0.6em]">TM</sup></th>
-                <th className="p-8 text-center text-xs font-black uppercase tracking-widest text-black">Others</th>
-              </tr>
-            </thead>
-            <tbody>
-              {comparison.map((row, i) => (
-                <tr key={i} className="border-b border-gray-50 last:border-0 hover:bg-cream transition-colors">
-                  <td className="p-8 text-foreground font-bold">{row.feature}</td>
-                  <td className="p-8 text-center text-primary font-black">{row.aisa}</td>
-                  <td className="p-8 text-center text-black/40 font-bold">{row.others}</td>
+        <div className="bg-white rounded-[32px] sm:rounded-[40px] whatsapp-shadow border border-gray-100 overflow-hidden">
+          <div className="overflow-x-auto no-scrollbar">
+            <table className="w-full min-w-[500px] sm:min-w-0">
+              <thead>
+                <tr className="border-b border-gray-50 bg-gray-50/50">
+                  <th className="p-4 sm:p-8 text-left text-[10px] sm:text-xs font-black uppercase tracking-widest text-black">Features</th>
+                  <th className="p-4 sm:p-8 text-center text-[10px] sm:text-xs font-black uppercase tracking-widest text-black">AISA Connect<sup className="text-[0.6em]">TM</sup></th>
+                  <th className="p-4 sm:p-8 text-center text-[10px] sm:text-xs font-black uppercase tracking-widest text-black">Others</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {comparison.map((row, i) => (
+                  <tr key={i} className="border-b border-gray-50 last:border-0 hover:bg-cream transition-colors">
+                    <td className="p-4 sm:p-8 text-xs sm:text-sm text-foreground font-bold">{row.feature}</td>
+                    <td className="p-4 sm:p-8 text-xs sm:text-sm text-center text-primary font-black">{row.aisa}</td>
+                    <td className="p-4 sm:p-8 text-xs sm:text-sm text-center text-black/40 font-bold">{row.others}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>

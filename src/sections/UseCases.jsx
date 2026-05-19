@@ -81,99 +81,24 @@ const industries = [
   }
 ];
 
-const Modal = ({ isOpen, onClose, industryName }) => {
-  const [step, setStep] = useState('form');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setStep('success');
+const getGoogleFormUrl = (industryId) => {
+  const baseUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfS8tjE_ZfO9CLOQMWuIaomaectutZCBJjur_uCbJ0MAQ6xfA/viewform?usp=pp_url";
+  
+  const industryMapping = {
+    hospital: "Hospital",
+    sales: "Sales",
+    cashflow: "Finance",
+    ads: "Marketing",
+    creative: "Creative",
+    hr: "HR",
+    school: "Education",
+    bank: "Banking",
+    builder: "Construction",
+    legal: "Legal"
   };
-
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="absolute inset-0 bg-secondary/20 backdrop-blur-xl"
-          />
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="relative w-full max-w-xl bg-white rounded-[40px] shadow-2xl border border-white/40 overflow-hidden"
-          >
-            <button onClick={onClose} className="absolute top-6 right-6 p-2 rounded-full hover:bg-gray-100 transition-colors z-10">
-              <X size={20} />
-            </button>
-
-            <div className="p-8 sm:p-12">
-              {step === 'form' ? (
-                <>
-                  <div className="mb-8">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary font-black text-[10px] uppercase tracking-widest mb-4">
-                      Early Access Beta
-                    </div>
-                    <h2 className="text-3xl font-black text-foreground mb-2">Deploy {industryName}</h2>
-                    <p className="text-sm font-semibold text-foreground/50">Experience the future of AI-powered business automation.</p>
-                  </div>
-
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="space-y-1.5">
-                        <label className="text-[10px] font-black uppercase tracking-wider text-foreground/40 ml-1">Full Name</label>
-                        <input required type="text" className="w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-bold text-sm" placeholder="John Doe" />
-                      </div>
-                      <div className="space-y-1.5">
-                        <label className="text-[10px] font-black uppercase tracking-wider text-foreground/40 ml-1">Work Email</label>
-                        <input required type="email" className="w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-bold text-sm" placeholder="john@company.com" />
-                      </div>
-                    </div>
-
-                    <div className="grid sm:grid-cols-2 gap-4">
-                      <div className="space-y-1.5">
-                        <label className="text-[10px] font-black uppercase tracking-wider text-foreground/40 ml-1">Company Name</label>
-                        <input type="text" className="w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-bold text-sm" placeholder="AISA Tech" />
-                      </div>
-                      <div className="space-y-1.5">
-                        <label className="text-[10px] font-black uppercase tracking-wider text-foreground/40 ml-1">Industry</label>
-                        <input readOnly value={industryName} type="text" className="w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl font-bold text-sm text-primary" />
-                      </div>
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <label className="text-[10px] font-black uppercase tracking-wider text-foreground/40 ml-1">Specific Requirements</label>
-                      <textarea rows={3} className="w-full px-5 py-4 bg-gray-50 border border-gray-100 rounded-2xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all font-bold text-sm resize-none" placeholder="Tell us about your automation goals..." />
-                    </div>
-
-                    <button type="submit" className="w-full py-5 bg-primary text-white rounded-2xl font-black text-base shadow-xl shadow-primary/20 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3 mt-4">
-                      Request Beta Access <Sparkles size={20} />
-                    </button>
-                  </form>
-                </>
-              ) : (
-                <div className="text-center py-8">
-                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-8">
-                    <CheckCircle2 size={40} className="text-primary animate-ai-pulse" />
-                  </div>
-                  <h2 className="text-3xl font-black text-foreground mb-4">Request Submitted!</h2>
-                  <p className="text-foreground/50 font-semibold mb-10 px-4">
-                    Your AI ecosystem request for <span className="text-primary">{industryName}</span> has been received. Our team will contact you within 24 hours.
-                  </p>
-                  <button onClick={onClose} className="btn-secondary !w-auto !px-10">
-                    Close Window
-                  </button>
-                </div>
-              )}
-            </div>
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>
-  );
+  
+  const val = industryMapping[industryId] || "AI Automation";
+  return `${baseUrl}&entry.2087930461=${encodeURIComponent(val)}`;
 };
 
 const WorkflowVisual = ({ steps }) => (
@@ -206,46 +131,47 @@ const WorkflowVisual = ({ steps }) => (
   </div>
 );
 
-const UseCaseCard = ({ industry, onOpenModal }) => {
+const UseCaseCard = ({ industry }) => {
   const Icon = industry.icon;
   return (
     <motion.div
-      className="flex-shrink-0 w-[270px] sm:w-[285px] bg-white p-5 sm:p-6 rounded-[24px] whatsapp-shadow border border-gray-100 group transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden"
+      className="flex-shrink-0 w-[270px] sm:w-[285px] bg-white p-5 sm:p-6 rounded-[24px] whatsapp-shadow border border-gray-100 group transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl relative overflow-hidden flex flex-col justify-between min-h-[360px]"
     >
       <div className="absolute top-0 right-0 w-20 h-20 bg-primary/5 rounded-full blur-3xl -mr-10 -mt-10 transition-all" />
       
-      <div className="relative z-10">
-        <div className="w-10 h-10 bg-cream rounded-xl flex items-center justify-center text-primary mb-3 transition-all duration-300 shadow-lg shadow-primary/5">
-          <Icon size={20} />
+      <div className="relative z-10 flex flex-col h-full justify-between">
+        <div>
+          <div className="w-10 h-10 bg-cream rounded-xl flex items-center justify-center text-primary mb-3 transition-all duration-300 shadow-lg shadow-primary/5">
+            <Icon size={20} />
+          </div>
+          
+          <h3 className="text-lg font-black text-black mb-1.5 transition-colors leading-tight">{industry.name}</h3>
+          <p className="text-[11px] font-bold text-[#334155] leading-relaxed min-h-[32px] mb-3">
+            {industry.useCase}
+          </p>
+
+          <WorkflowVisual steps={industry.workflow} />
         </div>
-        
-        <h3 className="text-lg font-black text-black mb-1.5 transition-colors leading-tight">{industry.name}</h3>
-        <p className="text-[11px] font-bold text-[#334155] leading-relaxed min-h-[32px]">
-          {industry.useCase}
-        </p>
 
-        <WorkflowVisual steps={industry.workflow} />
-
-        <button 
-          onClick={() => onOpenModal(industry.name)}
-          className="w-full mt-5 py-3.5 bg-gray-50 text-black font-black text-xs uppercase tracking-widest rounded-xl flex items-center justify-center gap-2 hover:bg-primary hover:text-white hover:shadow-xl hover:shadow-primary/20 transition-all active:scale-[0.98]"
-        >
-          Get Early Access <Sparkles size={14} />
-        </button>
+        <div className="mt-5">
+          <a 
+            href={getGoogleFormUrl(industry.id)}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-industry={industry.id}
+            className="group/btn w-full py-3.5 bg-gray-50 hover:bg-primary text-black hover:text-white font-black text-xs uppercase tracking-widest rounded-xl flex items-center justify-center gap-2 transition-all duration-300 ease-out hover:-translate-y-0.5 active:scale-[0.98] border border-gray-100 hover:border-primary hover:shadow-lg hover:shadow-primary/20 cursor-pointer"
+          >
+            Get Early Access 
+            <Sparkles size={14} className="group-hover/btn:scale-110 group-hover/btn:rotate-12 transition-transform duration-300" />
+          </a>
+        </div>
       </div>
     </motion.div>
   );
 };
 
 const UseCases = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [selectedIndustry, setSelectedIndustry] = useState('');
   const scrollRef = useRef(null);
-
-  const openModal = (name) => {
-    setSelectedIndustry(name);
-    setModalOpen(true);
-  };
 
   const scroll = (direction) => {
     if (scrollRef.current) {
@@ -285,11 +211,10 @@ const UseCases = () => {
             ref={scrollRef}
             className="flex gap-4 sm:gap-5 overflow-x-auto pb-10 pt-4 px-4 -mx-4 scroll-smooth no-scrollbar snap-x snap-mandatory"
           >
-            {industries.map((industry, i) => (
+            {industries.map((industry) => (
               <div key={industry.id} className="snap-center">
                 <UseCaseCard 
                   industry={industry} 
-                  onOpenModal={openModal}
                 />
               </div>
             ))}
@@ -315,12 +240,6 @@ const UseCases = () => {
           <ArrowRight size={12} className="animate-pulse" /> Swipe to explore
         </div>
       </div>
-
-      <Modal 
-        isOpen={modalOpen} 
-        onClose={() => setModalOpen(false)} 
-        industryName={selectedIndustry} 
-      />
     </section>
   );
 };

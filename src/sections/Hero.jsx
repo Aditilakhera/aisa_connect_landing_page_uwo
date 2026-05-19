@@ -4,7 +4,7 @@ import {
   ArrowRight, ShieldCheck, Zap, Code2, Users, 
   MessageSquare, BarChart3, Clock, Globe2, 
   Database, Send, CheckCheck, Sparkles, 
-  Layers, Cpu, Workflow, Bell 
+  Layers, Cpu, Workflow, Bell, Star 
 } from 'lucide-react';
 
 const chatSequence = [
@@ -208,7 +208,7 @@ const Hero = () => {
   }, [messages, isTyping]);
 
   return (
-    <section className="relative min-h-[85vh] lg:min-h-[88vh] pt-24 pb-6 lg:pt-28 lg:pb-8 overflow-hidden bg-white bg-mesh flex items-center">
+    <section className="relative min-h-0 pt-24 pb-6 sm:pt-28 sm:pb-8 overflow-hidden bg-white bg-mesh flex items-center">
       {/* Background Energy Layers */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 -right-1/4 w-[60rem] h-[60rem] bg-primary/5 rounded-full blur-[140px] animate-pulse" />
@@ -216,41 +216,45 @@ const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10 w-full">
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 lg:gap-16 items-center">
+        {/* Top-aligned single-row responsive grid for side-by-side mobile layout */}
+        <div className="grid grid-cols-[1.3fr_0.7fr] sm:grid-cols-[1.2fr_0.8fr] lg:grid-cols-[1.1fr_0.9fr] gap-4 sm:gap-8 lg:gap-16 items-start lg:items-center">
           
           {/* LEFT: CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-center lg:text-left"
+            className="text-left flex flex-col justify-start"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-mint/60 border border-primary/20 text-secondary font-bold text-xs mb-6 shadow-sm">
-              <Zap size={14} className="text-primary animate-pulse" />
-              Official WhatsApp Business API Partner
+            <div className="self-start inline-flex items-center gap-1 px-2 py-0.5 sm:px-4 sm:py-2 rounded-full bg-mint/60 border border-primary/20 text-secondary font-bold text-[8px] sm:text-xs mb-3 sm:mb-6 shadow-sm">
+              <Zap size={10} className="text-primary animate-pulse sm:w-3.5 sm:h-3.5" />
+              Official WhatsApp Partner
             </div>
 
-            <h1 className="heading-xl text-foreground mb-6 max-w-2xl mx-auto lg:mx-0">
+            {/* Apple-level clean heading using clamp font sizing and tight line stacking */}
+            <h1 className="text-[clamp(26px,6.8vw,36px)] sm:text-5xl lg:text-[56px] font-black text-foreground mb-2 sm:mb-6 max-w-2xl leading-[1.05] sm:leading-[1.1] tracking-tight">
               Automate Your Business on <span className="text-gradient">WhatsApp</span> with AISA Connect<sup className="text-[0.6em]">TM</sup>.
             </h1>
 
-            <p className="text-base md:text-lg text-[#334155] font-semibold leading-relaxed mb-8 max-w-lg mx-auto lg:mx-0">
+            {/* Premium, readable, non-cramped subtext */}
+            <p className="text-[11px] sm:text-sm md:text-base lg:text-lg text-text-secondary font-semibold leading-relaxed mb-4 sm:mb-8 max-w-lg">
               Convert leads, reply instantly, send broadcasts, automate follow-ups, and close more sales: all with AISA Connect<sup className="text-[0.6em]">TM</sup>.
             </p>
 
-            <div className="flex flex-row flex-wrap gap-3 mb-10 justify-center lg:justify-start">
+            {/* Compact CTA Buttons in exactly 2 rows on mobile */}
+            <div className="grid grid-cols-2 gap-1.5 mb-4 sm:mb-10 w-full sm:flex sm:flex-row sm:gap-3 sm:w-auto">
               <a 
                 href="https://connect.aisa24.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary !w-auto !px-6 !py-3.5 !text-sm !shadow-primary/30 flex items-center justify-center gap-2"
+                className="btn-primary col-span-2 !w-full sm:!w-auto !px-3 !py-2 sm:!px-6 sm:!py-3.5 !text-[10px] sm:!text-sm !shadow-primary/30 flex items-center justify-center gap-1.5 min-h-[34px] sm:min-h-[52px]"
               >
-                Explore AISA Connect<sup className="text-[0.6em]">TM</sup> <ArrowRight size={16} />
+                Explore AISA Connect<sup className="text-[0.6em]">TM</sup> <ArrowRight size={12} className="sm:w-4 sm:h-4" />
               </a>
               <a 
                 href="https://calendly.com/admin-uwo24/30min"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary !w-auto !px-6 !py-3.5 !text-sm flex items-center justify-center"
+                className="btn-secondary !w-full sm:!w-auto !px-2 !py-2 sm:!px-6 sm:!py-3.5 !text-[9.5px] sm:!text-sm flex items-center justify-center min-h-[34px] sm:min-h-[52px] whitespace-nowrap"
               >
                 Book Demo
               </a>
@@ -258,36 +262,37 @@ const Hero = () => {
                 href="https://wa.me/918359890909?text=Hello%20AISA%20Connect!%20I'm%20interested%20in%20exploring%20AI%20automation%20for%20my%20business.%20Can%20you%20please%20help%20me%20get%20started%3F"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-whatsapp !w-auto !px-6 !py-3.5 !text-sm"
+                className="btn-whatsapp !w-full sm:!w-auto !px-2 !py-2 sm:!px-6 sm:!py-3.5 !text-[9.5px] sm:!text-sm flex items-center justify-center min-h-[34px] sm:min-h-[52px] whitespace-nowrap"
               >
                 Chat on WhatsApp
               </a>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-6 opacity-40">
-              <div className="flex items-center gap-2 font-black text-xs uppercase tracking-widest text-[#475569]">
-                <ShieldCheck size={16} className="text-primary" />
+            {/* Highly compact bottom badges locked in a single line */}
+            <div className="flex flex-row flex-nowrap items-center justify-start gap-1.5 sm:gap-6 opacity-45 overflow-hidden">
+              <div className="flex items-center gap-0.5 sm:gap-2 font-black text-[7.2px] sm:text-xs uppercase tracking-widest text-[#475569] whitespace-nowrap">
+                <ShieldCheck size={9} className="text-primary sm:w-4 sm:h-4" />
                 <span>Official API</span>
               </div>
-              <div className="flex items-center gap-2 font-black text-xs uppercase tracking-widest text-[#475569]">
-                <Code2 size={16} className="text-primary" />
+              <div className="flex items-center gap-0.5 sm:gap-2 font-black text-[7.2px] sm:text-xs uppercase tracking-widest text-[#475569] whitespace-nowrap">
+                <Code2 size={9} className="text-primary sm:w-4 sm:h-4" />
                 <span>No coding</span>
               </div>
-              <div className="flex items-center gap-2 font-black text-xs uppercase tracking-widest text-[#475569]">
-                <Globe2 size={16} className="text-primary" />
+              <div className="flex items-center gap-0.5 sm:gap-2 font-black text-[7.2px] sm:text-xs uppercase tracking-widest text-[#475569] whitespace-nowrap">
+                <Globe2 size={9} className="text-primary sm:w-4 sm:h-4" />
                 <span>Global Scale</span>
               </div>
             </div>
           </motion.div>
 
           {/* RIGHT: CINEMATIC PHONE EXPERIENCE */}
-          <div className="relative perspective-2000 py-4 lg:py-8">
-            {/* Holographic Glow behind phone */}
-            <div className={`absolute inset-0 bg-primary/20 rounded-full blur-[120px] transition-all duration-1000 ${isFlipped ? 'scale-150 opacity-40' : 'opacity-20'}`} />
+          <div className="relative py-1 sm:py-4 lg:py-8 self-start pt-3 sm:self-center sm:pt-0 pr-2 sm:pr-0">
+            {/* Holographic Glow behind phone (Subtle and clean glow) */}
+            <div className={`absolute inset-0 bg-primary/10 rounded-full blur-[40px] sm:blur-[120px] transition-all duration-1000 ${isFlipped ? 'scale-120 opacity-30' : 'opacity-10'}`} />
 
-            <div className="relative h-[500px] lg:h-[580px] w-full flex items-center justify-center">
+            <div className="relative h-[190px] sm:h-[450px] lg:h-[580px] w-full flex items-center justify-center">
               
-              {/* Floating Benefits (Stay Visible) */}
+              {/* Floating Benefits (Stay Visible, Hidden on Mobile/Tablet for density) */}
               <AnimatePresence>
                 {!isFlipped && activeBenefits.map((benefit, i) => (
                   <BenefitCard 
@@ -300,82 +305,82 @@ const Hero = () => {
                 ))}
               </AnimatePresence>
 
-              {/* 3D Rotating Phone Container */}
+              {/* 3D Rotating Phone Container - Narrower, clean, proportional sizes */}
               <motion.div
                 animate={{ 
                   rotateY: isFlipped ? 180 : 0,
-                  scale: stage === 'flipping' ? 1.05 : 1,
-                  z: stage === 'flipping' ? 100 : 0
+                  scale: stage === 'flipping' ? 1.03 : 1,
+                  z: stage === 'flipping' ? 50 : 0
                 }}
                 transition={{ 
                   duration: 1.2, 
                   type: "spring", 
-                  stiffness: 80, 
-                  damping: 15 
+                  stiffness: 85, 
+                  damping: 18 
                 }}
-                className="relative w-[250px] h-[500px] lg:w-[280px] lg:h-[560px] preserve-3d"
+                className="relative w-[95px] h-[190px] sm:w-[220px] sm:h-[440px] lg:w-[280px] lg:h-[560px] preserve-3d"
               >
                 {/* FRONT: CHAT INTERFACE */}
                 <div className="absolute inset-0 backface-hidden">
-                  <div className="w-full h-full bg-foreground rounded-[3rem] p-3 shadow-2xl border-[8px] border-foreground/10 overflow-hidden relative">
+                  <div className="w-full h-full bg-foreground rounded-[1.4rem] sm:rounded-[3rem] p-1 sm:p-3 shadow-lg border-[3px] sm:border-[8px] border-foreground/5 overflow-hidden relative">
                     {/* Glass Reflection */}
                     <div className="absolute inset-0 bg-gradient-to-tr from-white/10 to-transparent pointer-events-none z-20" />
                     {/* Notch */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-foreground rounded-b-2xl z-30" />
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-12 sm:w-32 h-2.5 sm:h-6 bg-foreground rounded-b-md sm:rounded-b-2xl z-30" />
                     
                     {/* Chat Content */}
-                    <div className="w-full h-full bg-[#ECE5DD] rounded-[2.2rem] overflow-hidden flex flex-col relative">
-                      <div className="bg-secondary px-4 pt-8 pb-3 flex items-center gap-3 shadow-md z-10">
-                        <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-                          <MessageSquare size={20} className="text-white" />
+                    <div className="w-full h-full bg-[#ECE5DD] rounded-[1rem] sm:rounded-[2.2rem] overflow-hidden flex flex-col relative">
+                      <div className="bg-secondary px-2 sm:px-4 pt-3.5 sm:pt-8 pb-1 sm:pb-3 flex items-center gap-1 sm:gap-3 shadow-md z-10">
+                        <div className="w-5 h-5 sm:w-10 sm:h-10 rounded-full bg-white/20 flex items-center justify-center">
+                          <MessageSquare className="text-white w-2.5 h-2.5 sm:w-5 sm:h-5" />
                         </div>
                         <div className="flex-1">
-                          <div className="text-white font-bold text-[13px]">AISA Connect<sup className="text-[0.6em]">TM</sup></div>
-                          <div className="text-[10px] text-white/70 font-bold">Online • Real-time Sync</div>
+                          <div className="text-white font-bold text-[8px] sm:text-[13px]">AISA Connect<sup className="text-[0.6em]">TM</sup></div>
+                          <div className="text-[6px] sm:text-[10px] text-white/70 font-bold">Online • Real-time</div>
                         </div>
                       </div>
                       
-                      <div ref={chatContainerRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-wa-pattern bg-[length:300px] scrollbar-hide">
+                      <div ref={chatContainerRef} className="flex-1 overflow-y-auto p-1.5 sm:p-4 space-y-2 sm:space-y-4 bg-wa-pattern bg-[length:120px] sm:bg-[length:300px] scrollbar-hide">
                         {messages.map((msg, i) => (
                           <motion.div
                             key={i}
-                            initial={{ opacity: 0, y: 15, scale: 0.9 }}
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
                           >
-                            <div className={`relative max-w-[85%] px-4 py-3 shadow-sm ${
+                            <div className={`relative max-w-[85%] px-1.5 py-1 sm:px-4 sm:py-3 shadow-sm ${
                               msg.type === 'user' 
-                              ? 'bg-mint rounded-2xl rounded-tr-none text-foreground' 
-                              : 'bg-white rounded-2xl rounded-tl-none text-foreground'
+                              ? 'bg-mint rounded-lg sm:rounded-2xl rounded-tr-none text-foreground' 
+                              : 'bg-white rounded-lg sm:rounded-2xl rounded-tl-none text-foreground'
                             }`}>
                               {msg.type === 'ai' && (
-                                <div className="flex items-center gap-1.5 mb-1">
-                                  <Sparkles size={10} className="text-primary fill-primary" />
-                                  <span className="text-[9px] font-black uppercase tracking-tighter text-primary">Intelligence active</span>
+                                <div className="flex items-center gap-0.5 mb-0.5 sm:mb-1">
+                                  <Sparkles className="text-primary fill-primary w-1.5 h-1.5 sm:w-2.5 sm:h-2.5" />
+                                  <span className="text-[5px] sm:text-[9px] font-black uppercase tracking-tighter text-primary">AI active</span>
                                 </div>
                               )}
-                              <p className="text-[13px] font-bold leading-relaxed">{msg.text}</p>
-                              <div className="flex items-center justify-end gap-1 mt-1.5 opacity-30">
-                                <span className="text-[8px] font-bold">{msg.time}</span>
-                                <CheckCheck size={10} className="text-secondary" />
+                              <p className="text-[8px] sm:text-[13px] font-bold leading-tight sm:leading-relaxed">{msg.text}</p>
+                              <div className="flex items-center justify-end gap-0.5 mt-0.5 sm:mt-1.5 opacity-30">
+                                <span className="text-[5px] sm:text-[8px] font-bold">{msg.time}</span>
+                                <CheckCheck className="text-secondary w-1.5 h-1.5 sm:w-2.5 sm:h-2.5" />
                               </div>
                             </div>
                           </motion.div>
                         ))}
                         {isTyping && (
                           <div className="flex justify-start">
-                            <div className="bg-white px-4 py-3 rounded-2xl rounded-tl-none flex items-center gap-1.5">
-                              <div className="w-1.5 h-1.5 bg-primary/40 rounded-full animate-bounce" />
-                              <div className="w-1.5 h-1.5 bg-primary/60 rounded-full animate-bounce [animation-delay:0.2s]" />
-                              <div className="w-1.5 h-1.5 bg-primary/80 rounded-full animate-bounce [animation-delay:0.4s]" />
+                            <div className="bg-white px-2 py-1.5 rounded-lg flex items-center gap-0.5">
+                              <div className="w-0.5 h-0.5 sm:w-1.5 sm:h-1.5 bg-primary/40 rounded-full animate-bounce" />
+                              <div className="w-0.5 h-0.5 sm:w-1.5 sm:h-1.5 bg-primary/60 rounded-full animate-bounce [animation-delay:0.2s]" />
+                              <div className="w-0.5 h-0.5 sm:w-1.5 sm:h-1.5 bg-primary/80 rounded-full animate-bounce [animation-delay:0.4s]" />
                             </div>
                           </div>
                         )}
                       </div>
 
-                      <div className="p-3 bg-[#F0F2F5] flex items-center gap-2">
-                        <div className="flex-1 bg-white rounded-full px-4 py-2.5 text-[12px] text-gray-400 font-bold">Type a message...</div>
-                        <div className="w-10 h-10 rounded-full bg-secondary flex items-center justify-center text-white shadow-lg"><Send size={18} fill="currentColor" /></div>
+                      <div className="p-1 sm:p-3 bg-[#F0F2F5] flex items-center gap-1">
+                        <div className="flex-1 bg-white rounded-full px-2 py-1 text-[7px] sm:text-[12px] text-gray-400 font-bold">Type a message...</div>
+                        <div className="w-5 h-5 sm:w-10 sm:h-10 rounded-full bg-secondary flex items-center justify-center text-white shadow-md"><Send className="w-2.5 h-2.5 sm:w-[18px] sm:h-[18px]" fill="currentColor" /></div>
                       </div>
                     </div>
                   </div>
@@ -383,73 +388,73 @@ const Hero = () => {
 
                 {/* BACK: SHOWCASE STACKED TIMELINE */}
                 <div className="absolute inset-0 backface-hidden rotate-y-180">
-                  <div className="w-full h-full bg-foreground rounded-[3rem] p-3 shadow-2xl border-[8px] border-foreground/10 overflow-hidden relative">
+                  <div className="w-full h-full bg-foreground rounded-[1.4rem] sm:rounded-[3rem] p-1 sm:p-3 shadow-lg border-[3px] sm:border-[8px] border-foreground/10 overflow-hidden relative">
                     {/* Cinematic Background */}
                     <div className="absolute inset-0 bg-gradient-to-b from-[#060612] to-[#0A0A1F]" />
                     
                     {/* Floating Particles/Glows */}
-                    <div className="absolute top-1/4 -left-1/4 w-64 h-64 bg-primary/20 rounded-full blur-[80px] animate-pulse" />
-                    <div className="absolute bottom-1/4 -right-1/4 w-64 h-64 bg-secondary/20 rounded-full blur-[80px] animate-pulse-soft" />
+                    <div className="absolute top-1/4 -left-1/4 w-20 h-20 bg-primary/20 rounded-full blur-[25px] animate-pulse" />
+                    <div className="absolute bottom-1/4 -right-1/4 w-20 h-20 bg-secondary/20 rounded-full blur-[25px] animate-pulse-soft" />
                     
-                    <div className="w-full h-full rounded-[2.2rem] overflow-hidden flex flex-col relative p-6">
+                    <div className="w-full h-full rounded-[1rem] sm:rounded-[2.2rem] overflow-hidden flex flex-col relative p-2 sm:p-6">
                       {/* Top Indicator */}
-                      <div className="flex justify-center mb-8">
-                        <div className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-2">
-                          <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                          <span className="text-[8px] font-black text-white/40 uppercase tracking-[0.2em]">AI Ecosystem Active</span>
+                      <div className="flex justify-center mb-2 sm:mb-8">
+                        <div className="px-1.5 py-0.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md flex items-center gap-0.5 sm:gap-2">
+                          <div className="w-0.5 h-0.5 sm:w-1.5 sm:h-1.5 rounded-full bg-primary animate-pulse" />
+                          <span className="text-[5px] sm:text-[8px] font-black text-white/40 uppercase tracking-[0.15em]">AI Active</span>
                         </div>
                       </div>
 
                       {/* Stacked Benefits Timeline */}
-                      <div className="flex-1 flex flex-col gap-3 justify-center overflow-hidden">
+                      <div className="flex-1 flex flex-col gap-1 sm:gap-3 justify-center overflow-hidden">
                         <AnimatePresence>
                           {showcaseBenefits.slice(0, visibleCount).map((benefit, i) => (
                             <motion.div
                               key={benefit.title}
                               layout
-                              initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                              initial={{ opacity: 0, y: 30, scale: 0.95 }}
                               animate={{ opacity: 1, y: 0, scale: 1 }}
                               transition={{ 
                                 type: "spring",
-                                stiffness: 200,
-                                damping: 25
+                                stiffness: 220,
+                                damping: 28
                               }}
-                              className="p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl shadow-2xl flex items-center gap-4 relative overflow-hidden group"
+                              className="p-1 sm:p-4 rounded-lg sm:rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl shadow-md flex items-center gap-1 sm:gap-4 relative overflow-hidden group"
                             >
                               {/* Background Gradient */}
                               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-50" />
                               
-                              <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary relative flex-shrink-0">
+                              <div className="w-4 h-4 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary relative flex-shrink-0">
                                 <div className="absolute inset-0 bg-primary/20 rounded-full blur-md animate-pulse" />
-                                {React.cloneElement(benefit.icon, { size: 18 })}
+                                {React.cloneElement(benefit.icon, { size: 8, className: "sm:w-[18px] sm:h-[18px]" })}
                               </div>
                               
                               <div className="flex-1 text-left min-w-0">
-                                <h4 className="text-xs font-black text-white mb-0.5 tracking-tight">{benefit.title}</h4>
-                                <p className="text-[9px] text-white/40 font-medium leading-tight line-clamp-2">{benefit.tagline}</p>
+                                <h4 className="text-[6.5px] sm:text-xs font-black text-white mb-0.5 tracking-tight">{benefit.title}</h4>
+                                <p className="text-[5px] sm:text-[9px] text-white/40 font-medium leading-none sm:leading-tight line-clamp-2">{benefit.tagline}</p>
                               </div>
 
                               {/* Small Pulse Dot */}
-                              <div className="w-1.5 h-1.5 rounded-full bg-primary/40 animate-pulse flex-shrink-0" />
+                              <div className="w-0.5 h-0.5 sm:w-1.5 sm:h-1.5 rounded-full bg-primary/40 animate-pulse flex-shrink-0" />
                             </motion.div>
                           ))}
                         </AnimatePresence>
                       </div>
 
                       {/* Bottom Status Bar */}
-                      <div className="mt-6 pt-4 border-t border-white/5 flex items-center justify-between">
-                        <div className="flex gap-1">
+                      <div className="mt-2 sm:mt-6 pt-1 sm:pt-4 border-t border-white/5 flex items-center justify-between">
+                        <div className="flex gap-0.5">
                           {[1, 2, 3, 4, 5].map((dot) => (
                             <div 
                               key={dot}
-                              className={`w-1 h-1 rounded-full transition-all duration-500 ${
+                              className={`w-0.5 h-0.5 rounded-full transition-all duration-500 ${
                                 dot <= visibleCount ? 'bg-primary' : 'bg-white/10'
                               }`}
                             />
                           ))}
                         </div>
-                        <span className="text-[8px] font-bold text-white/20 uppercase tracking-widest">
-                          AISA Connect<sup className="text-[0.6em]">TM</sup> v4.0
+                        <span className="text-[5px] sm:text-[8px] font-bold text-white/20 uppercase tracking-widest">
+                          v4.0
                         </span>
                       </div>
                     </div>
@@ -459,19 +464,6 @@ const Hero = () => {
             </div>
           </div>
 
-        </div>
-      </div>
-
-      {/* Mobile Stage Indicator */}
-      <div className="lg:hidden mt-10 px-6">
-        <div className="flex items-center justify-between p-4 rounded-2xl bg-white shadow-sm border border-gray-100">
-          <div className="flex items-center gap-3">
-            <div className={`w-3 h-3 rounded-full ${stage === 'demo' ? 'bg-primary animate-pulse' : 'bg-secondary'}`} />
-            <div className="text-xs font-black text-foreground uppercase tracking-widest">
-              {stage === 'demo' ? 'Live Chat Simulation' : 'AI Benefit Showcase'}
-            </div>
-          </div>
-          <Zap size={16} className="text-primary" />
         </div>
       </div>
     </section>

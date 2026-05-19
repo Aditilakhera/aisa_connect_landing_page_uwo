@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { FaInstagram } from 'react-icons/fa';
+import { FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Check, ArrowRight, Star, Zap, Globe, 
+import {
+  Check, ArrowRight, Star, Zap, Globe,
   Workflow, Database, Search, Smartphone, ShieldCheck,
   MessageCircle, Layout, ChevronDown, ChevronUp, X, Sparkles,
   User, Building2, Phone, Mail, Rocket, Cpu, BarChart3,
@@ -57,31 +57,62 @@ const aisaPlans = [
   }
 ];
 
-const instagramPlans = [
+const whatsappPlans = [
   {
     title: 'Starter Launch',
-    tagline: 'Begin your AI social journey',
-    setup: '₹5,000',
-    monthly: 'One-time',
-    features: ['DM automation', 'Comment automation', 'Auto replies', 'Keyword triggers'],
+    tagline: 'Best for startups & small businesses',
+    setup: '₹10,000',
+    monthly: '₹2,799/month',
+    features: [
+      'Advanced campaign filters',
+      'Conversation analytics',
+      'Additional chat automation',
+      'Commerce workflows',
+      'Order management panel',
+      'WhatsApp Pay',
+      '24-hour SLA support',
+      'Up to 3 integrations',
+      'API rate limit: 300 msgs/min',
+      'Campaign summary reports',
+      'Quick replies & broadcasts'
+    ],
     cta: 'Get Started'
   },
   {
     title: 'Growth Engine',
-    tagline: 'Scale your social engagement',
-    setup: '₹12,000',
-    monthly: 'One-time',
-    features: ['Giveaway automation', 'Inquiry handling', 'Quick flows', 'AI responses', 'Story mention replies'],
-    cta: 'Get Started',
+    tagline: 'POPULAR PLAN',
+    setup: '₹25,000',
+    monthly: '₹3,799/month',
+    features: [
+      'Unlimited external app integrations',
+      'Session message APIs',
+      'Incoming message automation',
+      'AI agent stats',
+      'AI + trait-based routing',
+      'Detailed campaign reports',
+      'All WhatsApp features included',
+      'Labels & broadcasts',
+      'CRM integrations'
+    ],
+    cta: 'Scale With AI',
     isPopular: true
   },
   {
     title: 'Enterprise',
-    tagline: 'The ultimate social AI stack',
-    setup: '₹25,000',
-    monthly: 'One-time',
-    features: ['Advanced DM funnels', 'Multi-staff inbox', 'Viral campaign AI', 'Analytics dashboard', 'CRM Sync'],
-    cta: 'Get Started'
+    tagline: 'For enterprise automation',
+    setup: '₹1 Lac+',
+    monthly: '₹50,000/month',
+    features: [
+      'API limit up to 60,000 msg/min',
+      'Dedicated customer success manager',
+      'Custom user-level reporting',
+      'High-speed messaging',
+      'MarTech integrations',
+      'Clevertap/WebEngage integration',
+      'Advanced CRM orchestration',
+      'Enterprise AI workflows'
+    ],
+    cta: 'Contact Sales'
   }
 ];
 
@@ -199,70 +230,69 @@ const CustomStackModal = ({ isOpen, onClose }) => {
   const currentCategory = addonCategories.find(c => c.id === activeCategory);
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      <motion.div 
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4">
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="absolute inset-0 bg-[#0F172A]/80 backdrop-blur-xl" 
+        className="absolute inset-0 bg-[#0F172A]/80 backdrop-blur-xl"
       />
-      
+
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 30 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
-        className="relative w-full max-w-[1200px] h-[90vh] bg-white rounded-[40px] shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col"
+        className="relative w-[calc(100%-16px)] sm:w-full max-w-[1200px] h-[95vh] sm:h-[90vh] bg-white rounded-[24px] sm:rounded-[40px] shadow-[0_0_100px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col mx-auto"
       >
-        <button onClick={onClose} className="absolute top-8 right-8 p-3 rounded-full hover:bg-gray-100 transition-colors z-[100] text-gray-400 hover:text-black">
-          <X size={24} />
+        <button onClick={onClose} className="absolute top-3 right-3 sm:top-8 sm:right-8 p-2 rounded-full hover:bg-gray-100 transition-colors z-[100] text-gray-400 hover:text-black bg-white/90 backdrop-blur-sm shadow-sm border border-gray-100 sm:border-0">
+          <X size={18} className="sm:w-6 sm:h-6" />
         </button>
 
-        <div className="flex-1 flex flex-col md:flex-row overflow-hidden">
+        <div className="flex-1 flex flex-col md:flex-row overflow-hidden pt-10 sm:pt-0">
           {/* Step 1: Configuration */}
           <AnimatePresence mode="wait">
             {step === 1 ? (
-              <motion.div 
+              <motion.div
                 key="step1"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                className="flex-1 flex flex-col md:flex-row overflow-hidden"
+                className="flex-1 flex flex-col md:flex-row overflow-hidden w-full max-w-full"
               >
                 {/* Sidebar */}
-                <div className="w-full md:w-80 bg-gray-50 p-8 flex flex-col relative overflow-hidden border-r border-gray-100">
+                <div className="w-full md:w-80 bg-gray-50 p-4 sm:p-8 flex flex-col relative overflow-hidden border-b md:border-b-0 md:border-r border-gray-100 flex-shrink-0">
                   {/* Subtle Glows */}
-                  <div className="absolute -top-20 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-[100px]" />
-                  
+                  <div className="absolute -top-20 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+
                   <div className="relative z-10">
-                    <div className="flex items-center gap-3 mb-10">
-                      <div className="w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/30">
-                        <Cpu size={20} className="animate-pulse" />
+                    <div className="flex items-center gap-3 mb-4 sm:mb-10 pr-10 sm:pr-0">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg sm:rounded-xl bg-primary flex items-center justify-center text-white shadow-lg shadow-primary/30 flex-shrink-0">
+                        <Cpu size={18} className="animate-pulse" />
                       </div>
                       <div>
-                        <h3 className="text-sm font-black uppercase tracking-widest text-[#0F172A]">AI Configuration</h3>
-                        <p className="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Build Your Automation Stack</p>
+                        <h3 className="text-xs sm:text-sm font-black uppercase tracking-widest text-[#0F172A]">AI Configuration</h3>
+                        <p className="text-[9px] sm:text-[10px] font-bold text-gray-400 uppercase tracking-tighter">Build Your Automation Stack</p>
                       </div>
                     </div>
-                    
-                    <div className="space-y-2">
+
+                    <div className="flex flex-row md:flex-col overflow-x-auto md:overflow-x-visible gap-1.5 pb-2 md:pb-0 scrollbar-hide w-full snap-x snap-mandatory">
                       {addonCategories.map((cat) => (
                         <button
                           key={cat.id}
                           onClick={() => setActiveCategory(cat.id)}
-                          className={`w-full group flex items-center justify-between px-5 py-4 rounded-2xl transition-all duration-300 relative overflow-hidden ${
-                            activeCategory === cat.id 
-                            ? 'bg-primary/10 text-primary' 
-                            : 'text-[#475569] hover:bg-white hover:text-[#0F172A] hover:shadow-sm'
-                          }`}
+                          className={`flex-shrink-0 snap-center w-auto md:w-full group flex items-center justify-between px-3.5 sm:px-5 py-2 sm:py-3.5 rounded-xl sm:rounded-2xl transition-all duration-300 relative overflow-hidden ${activeCategory === cat.id
+                              ? 'bg-primary/10 text-primary'
+                              : 'text-[#475569] hover:bg-white hover:text-[#0F172A] hover:shadow-sm'
+                            }`}
                         >
-                          <div className="flex items-center gap-4">
+                          <div className="flex items-center gap-2 sm:gap-4">
                             <span className={activeCategory === cat.id ? 'text-primary' : 'text-gray-400 group-hover:text-primary transition-colors'}>{cat.icon}</span>
-                            <span className={`text-[11px] font-black uppercase tracking-wider ${activeCategory === cat.id ? 'text-primary' : ''}`}>{cat.title}</span>
+                            <span className={`text-[10px] sm:text-[11px] font-black uppercase tracking-wider ${activeCategory === cat.id ? 'text-primary' : ''}`}>{cat.title}</span>
                           </div>
                           {activeCategory === cat.id && (
-                            <motion.div 
+                            <motion.div
                               layoutId="active-dot"
-                              className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_10px_#22C55E]" 
+                              className="w-1.5 h-1.5 rounded-full bg-primary shadow-[0_0_10px_#22C55E] hidden md:block"
                             />
                           )}
                         </button>
@@ -270,7 +300,7 @@ const CustomStackModal = ({ isOpen, onClose }) => {
                     </div>
                   </div>
 
-                  <div className="mt-auto relative z-10 pt-10 border-t border-gray-200">
+                  <div className="mt-auto relative z-10 pt-4 border-t border-gray-200 hidden md:block">
                     <div className="flex items-center gap-3 mb-4">
                       <div className="w-8 h-8 rounded-lg bg-white border border-gray-200 flex items-center justify-center text-gray-400">
                         <History size={16} />
@@ -281,7 +311,7 @@ const CustomStackModal = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Right Content */}
-                <div className="flex-1 flex flex-col bg-[#F8FAFC] relative overflow-hidden">
+                <div className="flex-1 flex flex-col bg-[#F8FAFC] relative overflow-hidden min-h-0">
                   {/* Mesh Gradients */}
                   <div className="absolute top-0 left-0 w-full h-full opacity-40 pointer-events-none">
                     <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px]" />
@@ -289,14 +319,14 @@ const CustomStackModal = ({ isOpen, onClose }) => {
                   </div>
 
                   {/* Right Header */}
-                  <div className="p-10 pb-6 flex items-center justify-between relative z-10 bg-white/50 backdrop-blur-md border-b border-gray-100">
+                  <div className="p-4 sm:p-10 pb-3 sm:pb-6 flex items-center justify-between relative z-10 bg-white/50 backdrop-blur-md border-b border-gray-100 flex-shrink-0">
                     <div>
-                      <h2 className="text-3xl font-black text-[#0F172A] mb-1">{currentCategory?.title}</h2>
-                      <div className="flex items-center gap-4">
-                        <span className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-[9px] font-black uppercase tracking-widest">
+                      <h2 className="text-xl sm:text-3xl font-black text-[#0F172A] mb-1">{currentCategory?.title}</h2>
+                      <div className="flex items-center gap-3 sm:gap-4">
+                        <span className="flex items-center gap-1.5 px-2 py-0.5 sm:px-3 sm:py-1 rounded-full bg-primary/10 text-primary text-[8px] sm:text-[9px] font-black uppercase tracking-widest">
                           <div className="w-1 h-1 rounded-full bg-primary animate-ping" /> AI Optimized
                         </span>
-                        <span className="text-[11px] font-bold text-gray-400 uppercase tracking-widest">
+                        <span className="text-[9px] sm:text-[11px] font-bold text-gray-400 uppercase tracking-widest">
                           {currentCategory?.items.length} Modules Available
                         </span>
                       </div>
@@ -304,7 +334,7 @@ const CustomStackModal = ({ isOpen, onClose }) => {
                   </div>
 
                   {/* Grid of Cards */}
-                  <div className="overflow-y-auto p-10 pt-4 relative z-10 custom-scrollbar max-h-[50vh] min-h-0">
+                  <div className="flex-1 overflow-y-auto p-4 sm:p-10 pt-4 relative z-10 custom-scrollbar min-h-0">
                     <div className="space-y-2">
                       {currentCategory?.items.map((item, i) => {
                         const isSelected = selectedItems.includes(item.name);
@@ -315,41 +345,39 @@ const CustomStackModal = ({ isOpen, onClose }) => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: i * 0.02 }}
                             onClick={() => handleToggle(item.name)}
-                            className={`group p-3.5 px-4 rounded-xl border-2 transition-all duration-300 cursor-pointer relative overflow-hidden flex items-center justify-between ${
-                              isSelected 
-                              ? 'bg-white border-primary shadow-[0_5px_20px_rgba(34,197,94,0.05)] ring-4 ring-primary/5' 
-                              : 'bg-white border-gray-100 hover:border-primary/20 hover:bg-gray-50/50'
-                            }`}
+                            className={`group p-3.5 px-4 rounded-xl border-2 transition-all duration-300 cursor-pointer relative overflow-hidden flex items-center justify-between ${isSelected
+                                ? 'bg-white border-primary shadow-[0_5px_20px_rgba(34,197,94,0.05)] ring-4 ring-primary/5'
+                                : 'bg-white border-gray-100 hover:border-primary/20 hover:bg-gray-50/50'
+                              }`}
                           >
-                            <div className="flex items-center gap-4 flex-1">
+                            <div className="flex items-center gap-3 sm:gap-4 flex-1 min-w-0">
                               {/* Selection Indicator */}
-                              <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-all ${
-                                isSelected ? 'bg-primary border-primary text-white' : 'border-gray-200 text-transparent group-hover:border-primary/40'
-                              }`}>
+                              <div className={`w-5 h-5 rounded-md border-2 flex items-center justify-center flex-shrink-0 transition-all ${isSelected ? 'bg-primary border-primary text-white' : 'border-gray-200 text-transparent group-hover:border-primary/40'
+                                }`}>
                                 <Check size={12} strokeWidth={4} />
                               </div>
 
-                              <div className="flex-1">
+                              <div className="flex-1 min-w-0">
                                 <div className="flex items-center gap-2 mb-0.5">
-                                  <h4 className="text-sm font-black text-[#0F172A]">
+                                  <h4 className="text-xs sm:text-sm font-black text-[#0F172A]">
                                     {item.name}
                                   </h4>
                                   {item.tag && (
-                                    <span className="px-1.5 py-0.5 rounded-md bg-primary/10 text-primary text-[7px] font-black uppercase tracking-widest">
+                                    <span className="px-1.5 py-0.5 rounded-md bg-primary/10 text-primary text-[6px] sm:text-[7px] font-black uppercase tracking-widest">
                                       {item.tag}
                                     </span>
                                   )}
                                 </div>
-                                <p className="text-[11px] font-bold text-[#475569] line-clamp-1 opacity-70">
+                                <p className="text-[10px] sm:text-[11px] font-bold text-[#475569] line-clamp-1 opacity-70">
                                   {item.desc}
                                 </p>
                               </div>
                             </div>
 
-                            <div className="text-right ml-6">
-                              <span className="text-sm font-black text-primary block">{item.price}</span>
+                            <div className="text-right ml-4 sm:ml-6 flex-shrink-0">
+                              <span className="text-xs sm:text-sm font-black text-primary block">{item.price}</span>
                               {isSelected && (
-                                <span className="text-[8px] font-black uppercase tracking-widest text-primary/60">
+                                <span className="text-[7px] sm:text-[8px] font-black uppercase tracking-widest text-primary/60">
                                   Added
                                 </span>
                               )}
@@ -358,53 +386,55 @@ const CustomStackModal = ({ isOpen, onClose }) => {
                         );
                       })}
                     </div>
-                    
+
                     {currentCategory?.disclaimer && (
-                      <p className="text-[10px] text-gray-400 italic mt-8 text-center bg-gray-100/50 py-2 rounded-lg border border-gray-200/50">
+                      <p className="text-[9px] sm:text-[10px] text-gray-400 italic mt-6 text-center bg-gray-100/50 py-2 rounded-lg border border-gray-200/50 px-2">
                         {currentCategory?.disclaimer}
                       </p>
                     )}
                   </div>
 
                   {/* Summary Bar - Moved back outside but compact */}
-                  <div className="p-5 px-10 bg-white border-t border-gray-100 mt-auto relative z-20">
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                      <div className="flex items-center gap-6">
-                        <div>
-                          <div className="flex items-center gap-2 mb-1">
-                            <span className="text-xl font-black text-[#0F172A]">{selectedItems.length}</span>
-                            <span className="text-[9px] font-black text-gray-400 uppercase tracking-widest pt-1">Services Selected</span>
-                          </div>
-                          <div className="w-32 h-1 bg-gray-100 rounded-full overflow-hidden">
-                            <motion.div 
-                              initial={{ width: 0 }}
-                              animate={{ width: `${(selectedItems.length / 28) * 100}%` }}
-                              className="h-full bg-primary"
-                            />
+                  <div className="p-3 sm:p-5 px-4 sm:px-10 bg-white border-t border-gray-100 mt-auto relative z-20 flex-shrink-0">
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+                      <div className="flex items-center gap-4 sm:gap-6 w-full sm:w-auto justify-between sm:justify-start">
+                        <div className="flex items-center gap-3">
+                          <div>
+                            <div className="flex items-center gap-1.5 mb-0.5">
+                              <span className="text-base sm:text-xl font-black text-[#0F172A]">{selectedItems.length}</span>
+                              <span className="text-[8px] sm:text-[9px] font-black text-gray-400 uppercase tracking-widest pt-1">Selected</span>
+                            </div>
+                            <div className="w-20 sm:w-32 h-1 bg-gray-100 rounded-full overflow-hidden">
+                              <motion.div
+                                initial={{ width: 0 }}
+                                animate={{ width: `${(selectedItems.length / 28) * 100}%` }}
+                                className="h-full bg-primary"
+                              />
+                            </div>
                           </div>
                         </div>
 
                         <div className="h-8 w-px bg-gray-100 hidden sm:block" />
 
-                        <div>
-                          <p className="text-[9px] font-black text-gray-400 uppercase tracking-widest mb-0.5">Configuration Total</p>
-                          <p className="text-xl font-black text-primary">₹{totalPrice.toLocaleString()}</p>
+                        <div className="text-right sm:text-left">
+                          <p className="text-[8px] sm:text-[9px] font-black text-gray-400 uppercase tracking-widest mb-0.5">Estimated Setup</p>
+                          <p className="text-base sm:text-xl font-black text-primary">₹{totalPrice.toLocaleString()}</p>
                         </div>
                       </div>
 
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-3 w-full sm:w-auto">
                         <div className="hidden lg:flex items-center gap-2 text-primary bg-primary/5 px-3 py-1.5 rounded-full border border-primary/10">
                           <Lightbulb size={12} />
                           <span className="text-[8px] font-black uppercase tracking-widest">AI Proposal Ready</span>
                         </div>
-                        <button 
+                        <button
                           onClick={() => {
                             if (selectedItems.length > 0) setStep(2);
                           }}
                           disabled={selectedItems.length === 0}
-                          className={`btn-primary !px-8 !py-2.5 flex items-center gap-2 text-xs shadow-xl shadow-primary/25 ${selectedItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
+                          className={`btn-primary !px-4 sm:!px-8 !py-2.5 flex items-center justify-center gap-2 text-xs shadow-xl shadow-primary/25 w-full sm:w-auto whitespace-nowrap ${selectedItems.length === 0 ? 'opacity-50 cursor-not-allowed' : ''}`}
                         >
-                          Continue Custom Proposal <ChevronRight size={16} />
+                          Continue to Proposal <ChevronRight size={14} />
                         </button>
                       </div>
                     </div>
@@ -412,42 +442,42 @@ const CustomStackModal = ({ isOpen, onClose }) => {
                 </div>
               </motion.div>
             ) : (
-              <motion.div 
+              <motion.div
                 key="step2"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: 20 }}
-                className="flex-1 flex flex-col md:flex-row overflow-hidden bg-[#F8FAFC]"
+                className="flex-1 flex flex-col md:flex-row overflow-hidden bg-[#F8FAFC] w-full max-w-full"
               >
                 {/* Step 2 Sidebar (Summary) */}
-                <div className="w-full md:w-[400px] bg-gray-50 p-10 flex flex-col relative overflow-hidden border-r border-gray-100">
-                  <div className="absolute top-[-10%] right-[-10%] w-[300px] h-[300px] bg-primary/5 rounded-full blur-[100px]" />
-                  
+                <div className="w-full md:w-[400px] bg-gray-50 p-4 sm:p-10 flex flex-col relative overflow-hidden border-b md:border-b-0 md:border-r border-gray-100 flex-shrink-0">
+                  <div className="absolute top-[-10%] right-[-10%] w-[300px] h-[300px] bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
+
                   <div className="relative z-10">
-                    <button 
+                    <button
                       onClick={() => setStep(1)}
-                      className="flex items-center gap-2 text-gray-400 hover:text-[#0F172A] transition-colors mb-10 text-xs font-black uppercase tracking-widest"
+                      className="flex items-center gap-2 text-gray-400 hover:text-[#0F172A] transition-colors mb-4 sm:mb-10 text-xs font-black uppercase tracking-widest"
                     >
                       <ChevronDown className="rotate-90" size={16} /> Back to Stack
                     </button>
-                    
-                    <h3 className="text-2xl font-black text-[#0F172A] mb-6">Stack Summary</h3>
-                    
-                    <div className="space-y-4 max-h-[50vh] overflow-y-auto pr-2 scroll-x-hide mb-8">
+
+                    <h3 className="text-xl sm:text-2xl font-black text-[#0F172A] mb-3 sm:mb-6">Stack Summary</h3>
+
+                    <div className="space-y-2 max-h-[15vh] md:max-h-[50vh] overflow-y-auto pr-2 scrollbar-hide mb-4 sm:mb-8">
                       {selectedItems.map((item, idx) => (
-                        <div key={idx} className="flex items-center justify-between p-4 rounded-2xl bg-white border border-gray-100 shadow-sm">
+                        <div key={idx} className="flex items-center justify-between p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-gray-100 shadow-sm">
                           <span className="text-xs font-bold text-[#475569]">{item}</span>
-                          <CheckCircle2 size={16} className="text-primary" />
+                          <CheckCircle2 size={16} className="text-primary flex-shrink-0" />
                         </div>
                       ))}
                     </div>
-                    
-                    <div className="pt-8 border-t border-gray-200">
+
+                    <div className="pt-4 sm:pt-8 border-t border-gray-200">
                       <div className="flex justify-between items-center mb-2">
                         <span className="text-xs font-black text-gray-400 uppercase tracking-widest">Total Configuration</span>
-                        <span className="text-2xl font-black text-primary">₹{totalPrice.toLocaleString()}</span>
+                        <span className="text-xl sm:text-2xl font-black text-primary">₹{totalPrice.toLocaleString()}</span>
                       </div>
-                      <p className="text-[10px] text-gray-400 font-bold leading-relaxed uppercase tracking-widest">
+                      <p className="text-[9px] sm:text-[10px] text-gray-400 font-bold leading-relaxed uppercase tracking-widest">
                         Estimated setup cost. Monthly maintenance as per selection.
                       </p>
                     </div>
@@ -455,11 +485,11 @@ const CustomStackModal = ({ isOpen, onClose }) => {
                 </div>
 
                 {/* Step 2 Form */}
-                <div className="flex-1 p-10 md:p-16 flex flex-col overflow-y-auto bg-white">
+                <div className="flex-1 p-4 sm:p-10 md:p-16 flex flex-col overflow-y-auto bg-white">
                   <div className="max-w-2xl">
-                    <h2 className="text-4xl font-black text-[#0F172A] mb-2">Finalize Proposal</h2>
-                    <p className="text-[#475569] font-bold mb-10">Fill in your business details to receive a personalized AI automation strategy.</p>
-                    
+                    <h2 className="text-2xl sm:text-4xl font-black text-[#0F172A] mb-1">Finalize Proposal</h2>
+                    <p className="text-[#475569] font-bold text-xs sm:text-sm mb-6 sm:mb-10">Fill in your business details to receive a personalized AI automation strategy.</p>
+
                     <form className="space-y-6" onSubmit={(e) => {
                       e.preventDefault();
                       const requirements = selectedItems.join(', ');
@@ -469,65 +499,65 @@ const CustomStackModal = ({ isOpen, onClose }) => {
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div className="space-y-2">
                           <label className="text-[10px] font-black uppercase tracking-widest text-[#0F172A]">Full Name</label>
-                          <input 
+                          <input
                             required
-                            type="text" 
+                            type="text"
                             placeholder="John Doe"
                             className="w-full px-5 py-4 rounded-2xl bg-gray-50 border-2 border-gray-100 focus:border-primary focus:bg-white transition-all outline-none font-bold"
                             value={form.name}
-                            onChange={(e) => setForm({...form, name: e.target.value})}
+                            onChange={(e) => setForm({ ...form, name: e.target.value })}
                           />
                         </div>
                         <div className="space-y-2">
                           <label className="text-[10px] font-black uppercase tracking-widest text-[#0F172A]">Company Name</label>
-                          <input 
+                          <input
                             required
-                            type="text" 
+                            type="text"
                             placeholder="AISA Connect Ltd"
                             className="w-full px-5 py-4 rounded-2xl bg-gray-50 border-2 border-gray-100 focus:border-primary focus:bg-white transition-all outline-none font-bold"
                             value={form.company}
-                            onChange={(e) => setForm({...form, company: e.target.value})}
+                            onChange={(e) => setForm({ ...form, company: e.target.value })}
                           />
                         </div>
                         <div className="space-y-2">
                           <label className="text-[10px] font-black uppercase tracking-widest text-[#0F172A]">Business Type</label>
-                          <input 
+                          <input
                             required
-                            type="text" 
+                            type="text"
                             placeholder="Showroom / Clinic / School"
                             className="w-full px-5 py-4 rounded-2xl bg-gray-50 border-2 border-gray-100 focus:border-primary focus:bg-white transition-all outline-none font-bold"
                             value={form.type}
-                            onChange={(e) => setForm({...form, type: e.target.value})}
+                            onChange={(e) => setForm({ ...form, type: e.target.value })}
                           />
                         </div>
                         <div className="space-y-2">
                           <label className="text-[10px] font-black uppercase tracking-widest text-[#0F172A]">Phone Number</label>
-                          <input 
+                          <input
                             required
-                            type="tel" 
+                            type="tel"
                             placeholder="+91 00000 00000"
                             className="w-full px-5 py-4 rounded-2xl bg-gray-50 border-2 border-gray-100 focus:border-primary focus:bg-white transition-all outline-none font-bold"
                             value={form.phone}
-                            onChange={(e) => setForm({...form, phone: e.target.value})}
+                            onChange={(e) => setForm({ ...form, phone: e.target.value })}
                           />
                         </div>
                         <div className="space-y-2 sm:col-span-2">
                           <label className="text-[10px] font-black uppercase tracking-widest text-[#0F172A]">Corporate Email</label>
-                          <input 
+                          <input
                             required
-                            type="email" 
+                            type="email"
                             placeholder="john@company.com"
                             className="w-full px-5 py-4 rounded-2xl bg-gray-50 border-2 border-gray-100 focus:border-primary focus:bg-white transition-all outline-none font-bold"
                             value={form.email}
-                            onChange={(e) => setForm({...form, email: e.target.value})}
+                            onChange={(e) => setForm({ ...form, email: e.target.value })}
                           />
                         </div>
                         <div className="space-y-2 sm:col-span-2">
                           <label className="text-[10px] font-black uppercase tracking-widest text-[#0F172A]">Budget Range</label>
-                          <select 
+                          <select
                             className="w-full px-5 py-4 rounded-2xl bg-gray-50 border-2 border-gray-100 focus:border-primary focus:bg-white transition-all outline-none font-bold appearance-none"
                             value={form.budget}
-                            onChange={(e) => setForm({...form, budget: e.target.value})}
+                            onChange={(e) => setForm({ ...form, budget: e.target.value })}
                           >
                             <option>₹19,000 - ₹50,000</option>
                             <option>₹50,000 - ₹1,50,000</option>
@@ -537,21 +567,21 @@ const CustomStackModal = ({ isOpen, onClose }) => {
                         </div>
                         <div className="space-y-2 sm:col-span-2">
                           <label className="text-[10px] font-black uppercase tracking-widest text-[#0F172A]">Specific Requirements</label>
-                          <textarea 
+                          <textarea
                             rows={3}
                             placeholder="Tell us about your specific automation needs..."
                             className="w-full px-5 py-4 rounded-2xl bg-gray-50 border-2 border-gray-100 focus:border-primary focus:bg-white transition-all outline-none font-bold resize-none"
                             value={form.notes}
-                            onChange={(e) => setForm({...form, notes: e.target.value})}
+                            onChange={(e) => setForm({ ...form, notes: e.target.value })}
                           />
                         </div>
                       </div>
 
-                      <button 
+                      <button
                         type="submit"
                         className="w-full btn-primary !py-5 flex items-center justify-center gap-3 text-lg shadow-2xl shadow-primary/30 mt-4 group"
                       >
-                        Submit Proposal Request 
+                        Submit Proposal Request
                         <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
                       </button>
                     </form>
@@ -569,76 +599,76 @@ const CustomStackModal = ({ isOpen, onClose }) => {
 const PricingCard = ({ plan, isAisa, onOpenModal }) => {
   const isStarter = plan.title.includes('Starter');
   const isEnterprise = plan.title.includes('Enterprise');
-  
+
   return (
     <motion.div
       layout
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="snap-center flex-shrink-0 w-[85vw] sm:w-auto relative"
+      className="snap-center flex-shrink-0 w-[85%] min-w-[85%] max-w-[85%] sm:w-auto sm:min-w-0 sm:max-w-none relative"
     >
-      <div className={`relative h-full rounded-[40px] border transition-all duration-500 group ${
-        plan.isPopular 
-          ? 'bg-white border-primary ring-4 ring-primary/5 shadow-2xl z-10 sm:scale-105' 
-          : plan.isGreen 
+      <div className={`relative h-full rounded-[32px] border transition-all duration-500 group ${plan.isPopular
+          ? 'bg-white border-primary ring-4 ring-primary/5 shadow-2xl z-10 sm:scale-105'
+          : plan.isGreen
             ? 'bg-[#F5FFF0] border-primary/20 text-black shadow-xl shadow-primary/5'
             : 'bg-white border-gray-100 whatsapp-shadow hover:border-primary/40'
-      }`}>
+        }`}>
         {/* Internal Overflow Clip for Glows */}
-        <div className="absolute inset-0 rounded-[40px] overflow-hidden pointer-events-none">
+        <div className="absolute inset-0 rounded-[32px] overflow-hidden pointer-events-none">
           {/* Decorative Glows */}
           {plan.isPopular && (
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-[60px] -mr-16 -mt-16" />
           )}
         </div>
-        
+
         {plan.isPopular && (
-          <div className="absolute -top-4 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-primary text-white px-5 py-2 rounded-full text-[10px] font-black tracking-widest shadow-xl shadow-primary/30 z-[30] whitespace-nowrap">
-            <Star size={12} fill="white" className="animate-pulse" /> MOST POPULAR
+          <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 flex items-center gap-1.5 bg-primary text-white px-4 py-1.5 rounded-full text-[9px] font-black tracking-widest shadow-xl shadow-primary/30 z-[30] whitespace-nowrap">
+            <Star size={10} fill="white" className="animate-pulse" /> MOST POPULAR
           </div>
         )}
 
-        <div className="p-6 sm:p-8 relative z-10 flex flex-col h-full">
-          <div className="mb-6">
-            <h3 className={`text-2xl font-black mb-1.5 text-black`}>
+        <div className="p-5 sm:p-6 relative z-10 flex flex-col h-full">
+          <div className="mb-4">
+            <h3 className={`text-xl font-black mb-1 text-black`}>
               {plan.title}
             </h3>
-            <p className={`text-[11px] font-black uppercase tracking-widest ${plan.isGreen ? 'text-primary' : 'text-[#475569]'}`}>
+            <p className={`text-[10px] font-black uppercase tracking-widest ${plan.isGreen ? 'text-primary' : 'text-[#475569]'}`}>
               {plan.tagline}
             </p>
           </div>
 
-          <div className="mb-6 space-y-1">
+          <div className="mb-4 space-y-1">
+            {/* Monthly Price (Bigger & On Top) */}
             <div className="flex items-baseline gap-1.5">
-              <span className={`text-[10px] font-black uppercase tracking-widest text-gray-400`}>Setup:</span>
-              <span className={`text-2xl font-black ${plan.isGreen ? 'text-primary' : 'text-black'}`}>
-                {plan.setup}
+              <span className="text-[10px] font-black uppercase tracking-wider text-gray-400">Monthly:</span>
+              <span className={`text-xl font-black ${plan.isGreen ? 'text-primary' : 'text-black'}`}>
+                {plan.monthly}{(!plan.monthly.includes('/') && plan.monthly !== 'CUSTOM' && !plan.monthly.includes('month')) ? '/month' : ''}
               </span>
             </div>
+            {/* Setup Price (Smaller & On Bottom) */}
             <div className="flex items-baseline gap-1.5">
-              <span className={`text-[10px] font-black uppercase tracking-widest text-gray-400`}>Monthly:</span>
-              <span className={`text-base font-black ${plan.isGreen ? 'text-primary/70' : 'text-[#334155]'}`}>
-                {plan.monthly}
+              <span className="text-[9px] font-black uppercase tracking-wider text-gray-400">Setup:</span>
+              <span className={`text-sm font-black ${plan.isGreen ? 'text-primary/70' : 'text-gray-500'}`}>
+                {plan.setup}{plan.setup !== 'CUSTOM' && plan.setup !== '₹1 Lac+' ? ' (One-time)' : ''}
               </span>
             </div>
           </div>
 
-          <div className="h-px w-full bg-gray-50 mb-6" />
+          <div className="h-px w-full bg-gray-50 mb-4" />
 
-          <ul className="space-y-3 mb-8">
+          <ul className="space-y-2 mb-6">
             {plan.features.map((f, i) => (
-              <li key={i} className="flex items-start gap-3 text-sm font-bold leading-tight">
-                <div className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
-                  plan.isPopular ? 'bg-primary text-white' : 'bg-primary/10 text-primary'
-                }`}>
-                  <Check size={12} strokeWidth={4} />
+              <li key={i} className="flex items-start gap-2.5 text-[13px] font-bold leading-tight">
+                <div className={`w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 ${plan.isPopular ? 'bg-primary text-white' : 'bg-primary/10 text-primary'
+                  }`}>
+                  <Check size={9} strokeWidth={4} />
                 </div>
                 <span className="text-[#334155]">{f}</span>
               </li>
             ))}
           </ul>
 
-          <button 
+          <button
             onClick={() => {
               if (isEnterprise) {
                 onOpenModal();
@@ -646,16 +676,15 @@ const PricingCard = ({ plan, isAisa, onOpenModal }) => {
                 window.location.href = `mailto:ai.mall@uwo24.com?subject=${plan.title} Plan Inquiry&body=Hello AISA Connect team,%0D%0A%0D%0AI am interested in the ${plan.title} plan for my business.%0D%0A%0D%0APlease provide more information.%0D%0A%0D%0ABest regards.`;
               }
             }}
-            className={`w-full py-3.5 rounded-xl font-black text-xs uppercase tracking-widest transition-all flex items-center justify-center gap-2 mt-auto group/btn ${
-              plan.isPopular
+            className={`w-full py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all flex items-center justify-center gap-2 mt-auto group/btn ${plan.isPopular
                 ? 'bg-primary text-white shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-1'
                 : plan.isGreen
                   ? 'bg-primary/10 text-primary hover:bg-primary hover:text-white hover:shadow-xl hover:shadow-primary/30 border border-primary/20'
                   : 'bg-gray-50 text-black hover:bg-primary hover:text-white border border-gray-100 hover:border-primary'
-            }`}
+              }`}
           >
-            {plan.cta} 
-            <ArrowRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
+            {plan.cta}
+            <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
           </button>
         </div>
       </div>
@@ -664,14 +693,14 @@ const PricingCard = ({ plan, isAisa, onOpenModal }) => {
 };
 
 const Pricing = () => {
-  const [mode, setMode] = useState('aisa'); // 'aisa' | 'insta'
+  const [mode, setMode] = useState('whatsapp'); // 'whatsapp' | 'aisa'
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <section id="pricing" className="section-padding bg-white relative overflow-hidden">
+    <section id="pricing" className="py-8 sm:py-16 px-0 sm:px-6 bg-white relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-mesh-green opacity-[0.03] pointer-events-none" />
-      
+
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <div className="text-center mb-8">
           <motion.div
@@ -689,49 +718,47 @@ const Pricing = () => {
 
         {/* Mode Switcher */}
         <div className="flex justify-center mb-8">
-          <div className="relative p-1.5 bg-gray-100 rounded-2xl flex items-center shadow-inner min-w-[320px] sm:min-w-[450px]">
+          <div className="relative p-1.5 bg-gray-100 rounded-2xl flex items-center shadow-inner min-w-[310px] sm:min-w-[450px]">
             <motion.div
               layoutId="switcher"
               className="absolute h-[calc(100%-12px)] bg-primary/10 border border-primary/20 rounded-xl z-0"
               style={{ width: 'calc(50% - 6px)' }}
-              animate={{ x: mode === 'insta' ? 0 : '100%' }}
+              animate={{ x: mode === 'whatsapp' ? 0 : '100%' }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
             />
             <button
-              onClick={() => setMode('insta')}
-              className={`relative z-10 flex-1 px-4 py-3.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 ${
-                mode === 'insta' ? 'text-primary' : 'text-gray-400 hover:text-gray-600'
-              }`}
+              onClick={() => setMode('whatsapp')}
+              className={`relative z-10 flex-1 px-2 sm:px-4 py-2.5 sm:py-3.5 rounded-xl text-[8px] sm:text-[10px] font-black uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 ${mode === 'whatsapp' ? 'text-primary' : 'text-gray-400 hover:text-gray-600'
+                }`}
             >
-              <FaInstagram size={14} /> Instagram Automation
+              <FaWhatsapp size={11} className="sm:w-3.5 sm:h-3.5" /> WhatsApp Automation
             </button>
             <button
               onClick={() => setMode('aisa')}
-              className={`relative z-10 flex-1 px-4 py-3.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all duration-300 flex items-center justify-center gap-2 ${
-                mode === 'aisa' ? 'text-primary' : 'text-gray-400 hover:text-gray-600'
-              }`}
+              className={`relative z-10 flex-1 px-2 sm:px-4 py-2.5 sm:py-3.5 rounded-xl text-[8px] sm:text-[10px] font-black uppercase tracking-wider transition-all duration-300 flex items-center justify-center gap-1 sm:gap-2 ${mode === 'aisa' ? 'text-primary' : 'text-gray-400 hover:text-gray-600'
+                }`}
             >
-              <Rocket size={14} /> AISA Connect<sup className="text-[0.6em]">TM</sup> Suite
+              <Rocket size={11} className="sm:w-3.5 sm:h-3.5" /> AISA Connect<sup className="text-[0.6em]">TM</sup>
             </button>
           </div>
         </div>
 
-        {/* Pricing Cards Container */}
+        {/* Pricing Cards Container - Full-bleed on mobile with horizontal scroll snapping */}
         <div className="relative">
           <AnimatePresence mode="wait">
             <motion.div
               key={mode}
-              initial={{ opacity: 0, x: mode === 'aisa' ? 40 : -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: mode === 'aisa' ? -40 : 40 }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="flex sm:grid sm:grid-cols-3 gap-6 lg:gap-8 pb-10 scroll-x-hide -mx-4 px-4 pt-8 items-stretch"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+              className="flex overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide sm:grid sm:grid-cols-3 gap-5 lg:gap-8 pb-10 -mx-4 px-6 pt-8 items-stretch touch-pan-x"
             >
-              {(mode === 'aisa' ? aisaPlans : instagramPlans).map((plan, i) => (
-                <PricingCard 
-                  key={plan.title} 
-                  plan={plan} 
-                  isAisa={mode === 'aisa'} 
+              {(mode === 'aisa' ? aisaPlans : whatsappPlans).map((plan, i) => (
+                <PricingCard
+                  key={plan.title}
+                  plan={plan}
+                  isAisa={mode === 'aisa'}
                   onOpenModal={() => setModalOpen(true)}
                 />
               ))}
@@ -739,25 +766,25 @@ const Pricing = () => {
           </AnimatePresence>
         </div>
 
-        {/* Bottom Features / Trust */}
-        <div className="mt-20 flex flex-wrap justify-center gap-12 border-t border-gray-100 pt-16 opacity-60">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-primary">
-              <ShieldCheck size={20} />
+        {/* Bottom Features / Trust - Locked in exactly 1 row on mobile */}
+        <div className="mt-12 sm:mt-20 flex flex-row flex-nowrap justify-center items-center gap-2 sm:gap-12 border-t border-gray-100 pt-10 sm:pt-16 opacity-60 overflow-hidden w-full px-1.5">
+          <div className="flex items-center gap-1 sm:gap-3 whitespace-nowrap">
+            <div className="w-5 h-5 sm:w-10 sm:h-10 rounded-full bg-gray-50 flex items-center justify-center text-primary flex-shrink-0">
+              <ShieldCheck size={11} className="sm:w-5 sm:h-5" />
             </div>
-            <span className="text-xs font-black uppercase tracking-widest text-black">Official Meta Partner</span>
+            <span className="text-[6.5px] sm:text-xs font-black uppercase tracking-wider text-black">Meta Partner</span>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-primary">
-              <Zap size={20} />
+          <div className="flex items-center gap-1 sm:gap-3 whitespace-nowrap">
+            <div className="w-5 h-5 sm:w-10 sm:h-10 rounded-full bg-gray-50 flex items-center justify-center text-primary flex-shrink-0">
+              <Zap size={11} className="sm:w-5 sm:h-5" />
             </div>
-            <span className="text-xs font-black uppercase tracking-widest text-black">GST Invoicing Available</span>
+            <span className="text-[6.5px] sm:text-xs font-black uppercase tracking-wider text-black">GST Invoicing</span>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-primary">
-              <Zap size={20} />
+          <div className="flex items-center gap-1 sm:gap-3 whitespace-nowrap">
+            <div className="w-5 h-5 sm:w-10 sm:h-10 rounded-full bg-gray-50 flex items-center justify-center text-primary flex-shrink-0">
+              <Zap size={11} className="sm:w-5 sm:h-5" />
             </div>
-            <span className="text-xs font-black uppercase tracking-widest text-black">Instant Onboarding</span>
+            <span className="text-[6.5px] sm:text-xs font-black uppercase tracking-wider text-black">Instant Setup</span>
           </div>
         </div>
       </div>
